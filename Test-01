@@ -1,0 +1,100 @@
+#Test-01
+#นายศุภกร ศิริเมืองมูล 
+#66543206088-7
+
+#include <stdio.h>
+
+//Prototype function//
+void InputNumbers( int A[6], int B[6] ) ;
+char SelectOperator( int A[6], int B[6], int Answer[7] ) ;
+
+int main() {
+	// Variables
+    int i = 0, j = 0, n = 0 ;  
+    int A[6] ;
+    int B[6] ;
+    int Answer[7] ;
+    char Operator ;
+
+    // Call the function 
+    InputNumbers( A, B ) ;
+    Operator = SelectOperator ( A, B, Answer ) ;
+	
+    // Output Display
+    printf("Index:       X	0  1  2  3  4  5\n\n") ;
+    printf("Number A: 	%d  %d  %d  %d  %d  %d\n", A[0], A[1], A[2], A[3], A[4], A[5]) ;
+    printf("Operator:                      	  %c\n", Operator) ;
+    printf("Number B: 	%d  %d  %d  %d  %d  %d\n", B[0], B[1], B[2], B[3], B[4], B[5]) ;
+	printf( "----------------------------------------------------\n" ) ;
+	printf("Answer:	     %d  %d  %d  %d  %d  %d  %d \n", Answer[6], Answer[5], Answer[4], Answer[3], Answer[2], Answer[1], Answer[0]) ;	
+	printf("====================================================\n") ;
+
+    return 0;
+}//end function
+
+//function Input number form user//
+void InputNumbers( int A[6], int B[6] ) {
+    // Variables
+    int i = 0, j = 0 ;
+    
+    // Input from user for A
+    printf("Enter Number A:\n") ;
+    do {
+        printf(" A[%d] : ", i) ;
+        scanf("%d", &A[i]) ;
+        i++ ;
+    } while ( i < 6 ) ;
+
+    // Reset i
+    i = 0 ;
+
+    // Input from user for B
+    printf("Enter Number B:\n") ;
+    do {
+        printf(" B[%d] : ", j) ;
+        scanf("%d", &B[j]) ;
+        j++ ;
+    } while ( j < 6 ) ;
+
+    // Reset j
+    j = 0 ;
+}//end function
+
+//function SelectOpertor to calculate//
+char SelectOperator( int A[6], int B[6], int Answer[7] ) {
+	// Variables
+	int i = 5, j = 5, n = 0 ; //set A, B to last index
+	int Carry = 0 ;
+    char Operator ;
+	
+	// Select + or -
+	do {
+		printf( "Operator : " ) ;
+		scanf( " %c", &Operator ) ;
+		printf( "----------------------------------------------------\n" ) ;
+	} while ( Operator != '+' && Operator != '-' ) ;		
+	do {
+		// Addition	
+		if ( Operator == '+' ) {
+			Answer[n] =  A[i] + B[j] + Carry ;		
+		}//end if
+		if ( Answer[n] >= 10 ) {			
+				Carry =  Answer[n] / 10  ;
+				Answer[n] %= 10 ;
+			} else {
+				Carry = 0 ; //reset Carry if not nedded
+			}//end if
+			
+		// Subtract 
+										
+			i-- ; 
+    		j-- ; 
+    		n++ ;  
+    		
+	} while ( n < 6 ) ;	
+		Answer[n] = Carry ; //stores the carry value in the Answer array
+		
+	return Operator ; //return value in SelectOperator backt to main
+}//end function
+
+  
