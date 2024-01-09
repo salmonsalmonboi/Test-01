@@ -89,7 +89,7 @@ char SelectOperator( int A[6], int B[6], int Answer[7] ) {
 		if ( Operator == '-' ) {
     		Answer[n] = A[i] - B[j] - Carry ;
 		}//end if
-    	if ( Answer[n] < 0 ) {
+    		if ( Answer[n] < 0 ) {
         		Carry = 1 ;
        	 		Answer[n] += 10 ; 
     		} else {
