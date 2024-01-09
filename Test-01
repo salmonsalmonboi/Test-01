@@ -86,8 +86,16 @@ char SelectOperator( int A[6], int B[6], int Answer[7] ) {
 			}//end if
 			
 		// Subtract 
-										
-			i-- ; 
+		if ( Operator == '-' ) {
+    		Answer[n] = A[i] - B[j] - Carry ;
+		}//end if
+    	if ( Answer[n] < 0 ) {
+        		Carry = 1 ;
+       	 		Answer[n] += 10 ; 
+    		} else {
+        		Carry = 0 ; //reset Carry if not needed
+    	}//end if 				
+		i-- ; 
     		j-- ; 
     		n++ ;  
     		
@@ -97,4 +105,5 @@ char SelectOperator( int A[6], int B[6], int Answer[7] ) {
 	return Operator ; //return value in SelectOperator backt to main
 }//end function
 
+  
   
